@@ -17,38 +17,24 @@ import ntnu.idi.flushgame2.modules.Hand;
 import ntnu.idi.flushgame2.modules.Suit;
 import ntnu.idi.flushgame2.views.CardView;
 import ntnu.idi.flushgame2.views.HandView;
+import ntnu.idi.flushgame2.views.HomeView;
 
 public class Start extends Application {
 
-  private static VBox root;
+  public static Pane root;
   private static DeckOfCards deck;
 
   @Override
   public void start(Stage stage) throws IOException {
-    root = new VBox();
-    root.setSpacing(20);
+    root = new Pane();
     root.setPadding(new Insets(40));
-    root.setAlignment(Pos.TOP_CENTER);
-    deck = new DeckOfCards();
 
-    Pane cardPane = new Pane();
-    root.getChildren().add(cardPane);
-
-    Button dealButton = new Button("Deal cards");
-    dealButton.setOnAction(e -> dealCards(cardPane));
-    root.getChildren().add(dealButton);
+    HomeView.display();
 
     Scene scene = new Scene(root, 1000, 400);
     stage.setTitle("Hello!");
     stage.setScene(scene);
     stage.show();
-  }
-
-  private static void dealCards(Pane handPane) {
-    Hand hand = deck.dealHand(5);
-    handPane.getChildren().clear();
-    handPane.getChildren().add(HandView.getHandView(hand));
-
   }
 
 
