@@ -2,6 +2,7 @@ package ntnu.idi.flushgame2.views;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -14,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import ntnu.idi.flushgame2.Games.FlushGame;
@@ -34,11 +36,37 @@ public class FlushGameView {
     flushGameBox.prefHeightProperty().bind(Start.root.heightProperty());
     flushGameBox.setBackground(new Background(new BackgroundFill(Color.web("#006B3C"), null, null)));
     flushGameBox.setAlignment(Pos.CENTER);
+    flushGameBox.setSpacing(25);
 
-    flushGameBox.getChildren().addAll(createTitle(), handBox, createButtons());
+    flushGameBox.getChildren().addAll(createTitle(), createDeck(), handBox, createButtons());
 
     Start.root.getChildren().clear();
     Start.root.getChildren().addAll(flushGameBox);
+  }
+
+  public static StackPane createDeck() {
+    StackPane deckPane = new StackPane();
+    ImageView cardBack = CardView.getCardBack();
+
+    double heightToWidth = 63.5/88.8;
+
+    double height = 200;
+    double width = height * heightToWidth;
+
+    deckPane.setMaxSize(width, height);
+    deckPane.setMinSize(width, height);
+
+    cardBack.setFitHeight(height);
+    cardBack.setFitWidth(width);
+
+    Rectangle clip = new Rectangle(width, height);
+    clip.setArcWidth(13);
+    clip.setArcHeight(13);
+    cardBack.setClip(clip);
+
+    deckPane.getChildren().add(cardBack);
+
+    return deckPane;
   }
 
   private static void createHandBox() {

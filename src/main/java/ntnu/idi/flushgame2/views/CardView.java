@@ -30,6 +30,11 @@ public class CardView {
     return cardBox;
   }
 
+  public static ImageView getCardBack() {
+    ImageView image = createImageView("/ntnu/idi/flushgame2/suitImages/cardBackImage2.png");
+    return image;
+  }
+
   private static void setCardSize(VBox cardBox) {
     double heightToWidth = 63.5/88.8;
 
