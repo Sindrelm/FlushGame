@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -22,7 +23,7 @@ public class CardView {
     VBox cardBox = new VBox();
     cardBox.setSpacing(10);
     setCardSize(cardBox);
-    cardBox.setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, null, null)));
+    cardBox.setBackground(new Background(new BackgroundFill(Color.ANTIQUEWHITE, new CornerRadii(5), null)));
     cardBox.getChildren().addAll(getCardTop(card), getCardMiddle(card), getCardBottom(card));
 
 
