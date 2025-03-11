@@ -16,13 +16,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import ntnu.idi.flushgame2.Start;
+import ntnu.idi.flushgame2.modules.Card;
+import ntnu.idi.flushgame2.modules.DeckOfCards;
 
 public class BlackjackView {
 
   private static HBox dealerHand;
   private static HBox playerHand;
+  private static DeckOfCards deck;
 
   public static void display() {
+
+    deck = new DeckOfCards();
 
     playerHand = createHand();
     dealerHand = createHand();
@@ -41,7 +46,8 @@ public class BlackjackView {
   }
 
   private static void hit() {
-
+    Card card = deck.dealCard();
+    playerHand.getChildren().add(CardView.getCardView(card));
   }
 
   private static HBox createButtons() {
@@ -72,6 +78,7 @@ public class BlackjackView {
     handBox.setMinWidth(handBoxWidth);
 
     handBox.setAlignment(Pos.CENTER);
+    handBox.setSpacing(-75);
     handBox.setBackground(new Background(new BackgroundFill(Color.web("#006B3C"), new CornerRadii(10), null)));
 
     return handBox;
