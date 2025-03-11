@@ -1,7 +1,10 @@
 package ntnu.idi.flushgame2.views;
 
+import java.util.Objects;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -16,7 +19,7 @@ public class HomeView {
   public static void display() {
     VBox homeBox = new VBox();
 
-    homeBox.getChildren().addAll(createTitle(), createButtons());
+    homeBox.getChildren().addAll(createTitle(), createHomeImage(), createButtons());
 
     Start.root.getChildren().clear();
     Start.root.getChildren().add(homeBox);
@@ -53,6 +56,16 @@ public class HomeView {
     buttonsBox.getChildren().add(flushGameButton);
 
     return buttonsBox;
+  }
+
+  private static StackPane createHomeImage() {
+    ImageView image = new ImageView(new Image(Objects.requireNonNull(CardView.class.getResourceAsStream("/ntnu/idi/flushgame2/suitImages/roulettImage.png"))));
+    image.setFitHeight(300);
+    image.setFitWidth(425);
+
+    StackPane imagePane = new StackPane(image);
+    return imagePane;
+
   }
 
   private static void startFlushGame() {
