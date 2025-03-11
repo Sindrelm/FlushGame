@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import ntnu.idi.flushgame2.Start;
+import ntnu.idi.flushgame2.modules.BlackjackHand;
 
 public class HomeView {
 
@@ -50,10 +51,13 @@ public class HomeView {
     Button flushGameButton = new Button("Flush Game");
     flushGameButton.setOnAction(e -> startFlushGame());
 
+    Button blackJackButton = new Button("Blackjack");
+    blackJackButton.setOnAction(e -> startBlackjack());
+
     HBox buttonsBox = new HBox();
     buttonsBox.setAlignment(Pos.CENTER);
 
-    buttonsBox.getChildren().add(flushGameButton);
+    buttonsBox.getChildren().addAll(flushGameButton, blackJackButton);
 
     return buttonsBox;
   }
@@ -71,4 +75,11 @@ public class HomeView {
   private static void startFlushGame() {
     FlushGameView.display();
   }
+
+  private static void startBlackjack() {
+    BlackjackView.display();
+  }
+
 }
+
+
