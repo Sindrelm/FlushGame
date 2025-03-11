@@ -12,18 +12,16 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import ntnu.idi.flushgame2.Games.FlushGame;
 import ntnu.idi.flushgame2.Start;
 import ntnu.idi.flushgame2.modules.Card;
 import ntnu.idi.flushgame2.modules.DeckOfCards;
-import ntnu.idi.flushgame2.modules.Hand;
+import ntnu.idi.flushgame2.modules.FlushHand;
 import ntnu.idi.flushgame2.modules.Suit;
 
 public class FlushGameView {
@@ -135,7 +133,7 @@ public class FlushGameView {
     deck.reShuffleCards();
     handBox.getChildren().clear();
 
-    Hand hand = deck.dealHand(5);
+    FlushHand hand = deck.dealHand(5);
     handBox.getChildren().add(HandView.getHandView(hand));
 
     if (hand.isFlush()) {
@@ -155,7 +153,7 @@ public class FlushGameView {
       cards.add(new Card(Suit.CLUBS, i + 3));
       i ++;
     }
-    Hand hand = new Hand(cards);
+    FlushHand hand = new FlushHand(cards);
     handBox.getChildren().add(HandView.getHandView(hand));
     if (hand.isFlush()) {
       WinView.displayWinSequence();

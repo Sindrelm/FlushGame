@@ -34,7 +34,7 @@ public class DeckOfCards {
     return deck;
   }
 
-  public Hand dealHand(int handSize) {
+  public FlushHand dealHand(int handSize) {
     Random random = new Random();
     ArrayList<Card> cards = new ArrayList<>();
 
@@ -44,6 +44,6 @@ public class DeckOfCards {
       deck.remove(card);
     }
 
-    return new Hand(cards);
+    return new FlushHand(cards);
   }
 }

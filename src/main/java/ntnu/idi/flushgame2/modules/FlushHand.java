@@ -2,12 +2,11 @@ package ntnu.idi.flushgame2.modules;
 
 import java.util.ArrayList;
 
-public class Hand {
+public class FlushHand extends Hand{
 
-  private ArrayList<Card> hand;
 
-  public Hand(ArrayList<Card> hand) {
-    this.hand = hand;
+  public FlushHand(ArrayList<Card> hand) {
+    super(hand);
   }
 
   public boolean isFlush() {
@@ -36,9 +35,4 @@ public class Hand {
     }
     return false;
   }
-
-  public ArrayList<Card> getHand() {
-    return hand;
-  }
-
 }
