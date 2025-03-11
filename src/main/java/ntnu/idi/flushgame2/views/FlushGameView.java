@@ -40,35 +40,10 @@ public class FlushGameView {
     flushGameBox.setAlignment(Pos.CENTER);
     flushGameBox.setSpacing(25);
 
-    flushGameBox.getChildren().addAll(createTitle(), createDeck(), handBox, createButtons());
+    flushGameBox.getChildren().addAll(createTitle(), CardView.getCardBackPane(), handBox, createButtons());
 
     Start.root.getChildren().clear();
     Start.root.getChildren().addAll(flushGameBox);
-  }
-
-  public static StackPane createDeck() {
-    StackPane deckPane = new StackPane();
-    ImageView cardBack = CardView.getCardBack();
-
-    double heightToWidth = 63.5/88.8;
-
-    double height = 200;
-    double width = height * heightToWidth;
-
-    deckPane.setMaxSize(width, height);
-    deckPane.setMinSize(width, height);
-
-    cardBack.setFitHeight(height);
-    cardBack.setFitWidth(width);
-
-    Rectangle clip = new Rectangle(width, height);
-    clip.setArcWidth(13);
-    clip.setArcHeight(13);
-    cardBack.setClip(clip);
-
-    deckPane.getChildren().add(cardBack);
-
-    return deckPane;
   }
 
   private static void createHandBox() {

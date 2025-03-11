@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import ntnu.idi.flushgame2.modules.Card;
@@ -30,9 +31,30 @@ public class CardView {
     return cardBox;
   }
 
-  public static ImageView getCardBack() {
+  public static StackPane getCardBackPane() {
     ImageView image = createImageView("/ntnu/idi/flushgame2/suitImages/cardBackImage2.png");
-    return image;
+
+    StackPane deckPane = new StackPane();
+
+    double heightToWidth = 63.5/88.8;
+
+    double height = 200;
+    double width = height * heightToWidth;
+
+    deckPane.setMaxSize(width, height);
+    deckPane.setMinSize(width, height);
+
+    image.setFitHeight(height);
+    image.setFitWidth(width);
+
+    Rectangle clip = new Rectangle(width, height);
+    clip.setArcWidth(13);
+    clip.setArcHeight(13);
+    image.setClip(clip);
+
+    deckPane.getChildren().add(image);
+
+    return deckPane;
   }
 
   private static void setCardSize(VBox cardBox) {
