@@ -1,5 +1,6 @@
 package ntnu.idi.flushgame2.views;
 
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
@@ -16,8 +17,7 @@ public class WinView {
     setTextTransition(winText);
 
     Start.root.getChildren().add(winText);
-
-
+    winText.setOnMouseClicked(e -> Start.root.getChildren().remove(winText));
   }
 
   private static StackPane createText() {
