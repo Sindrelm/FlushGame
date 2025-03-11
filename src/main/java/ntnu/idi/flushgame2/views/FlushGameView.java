@@ -133,7 +133,7 @@ public class FlushGameView {
     deck.reShuffleCards();
     handBox.getChildren().clear();
 
-    FlushHand hand = deck.dealHand(5);
+    FlushHand hand = (FlushHand) deck.dealHand(5);
     handBox.getChildren().add(HandView.getHandView(hand));
 
     if (hand.isFlush()) {
