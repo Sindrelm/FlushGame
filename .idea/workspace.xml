@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1eb719bb-1942-4ec3-a093-3d7a87c869d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/modules/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/modules/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/views/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/views/CardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HandTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,20 +22,25 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Sindrelm"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Sindrelm&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:Sindrelm/FlushGame.git",
-    "accountId": "e39a7749-7b5a-4882-8e9b-62ec2023231d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Sindrelm/FlushGame.git&quot;,
+    &quot;accountId&quot;: &quot;e39a7749-7b5a-4882-8e9b-62ec2023231d&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -44,9 +48,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2uAMwYbU4y5qSECFD6aU64SXpsD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -57,9 +61,11 @@
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
     "Application.Start.executor": "Run",
+    "JUnit.All in FlushGame2.executor": "Run",
+    "Maven.run.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "pokerBranch",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/sindre/Documents/Proggramering/FlushGame2/src/main/resources/ntnu/idi/flushgame2/suitImages",
     "node.js.detected.package.eslint": "true",
@@ -78,7 +84,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Start">
+  <component name="RunManager" selected="JUnit.All in FlushGame2">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ntnu.idi.flushgame2.HelloApplication" />
       <module name="FlushGame2" />
@@ -105,8 +111,54 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in FlushGame2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlushGame2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="run" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="javafx:run" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.HelloApplication" />
+      <item itemvalue="Application.Start" />
+      <item itemvalue="JUnit.All in FlushGame2" />
+      <item itemvalue="Maven.run" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in FlushGame2" />
         <item itemvalue="Application.Start" />
         <item itemvalue="Application.HelloApplication" />
       </list>
@@ -128,7 +180,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741687165226</updated>
-      <workItem from="1741687166213" duration="6036000" />
+      <workItem from="1741687166213" duration="21623000" />
+      <workItem from="1741720151775" duration="623000" />
     </task>
     <servers />
   </component>

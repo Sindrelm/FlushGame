@@ -11,18 +11,30 @@ public class Hand {
   }
 
   public boolean isFlush() {
-    Suit previousSuit = hand.getFirst().getSuit();
-    Suit currentSuit;
+    int clubs = 0;
+    int hearts = 0;
+    int diamonds = 0;
+    int spades = 0;
 
     for (Card card : hand) {
-      currentSuit = card.getSuit();
-      if (currentSuit != previousSuit) {
-        return false;
+      Suit suit = card.getSuit();
+      if (suit == Suit.CLUBS) {
+        clubs ++;
       }
-      previousSuit = currentSuit;
+      else if (suit == Suit.HEARTS) {
+        hearts ++;
+      }
+      else if (suit == Suit.DIAMONDS) {
+        diamonds ++;
+      }
+      else if (suit == Suit.SPADES) {
+        spades ++;
+      }
     }
-
-    return true;
+    if (diamonds >=5 || hearts >= 5 || clubs >= 5 || spades >= 5) {
+      return true;
+    }
+    return false;
   }
 
   public ArrayList<Card> getHand() {

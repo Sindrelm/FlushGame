@@ -12,12 +12,18 @@ public class HandTest {
   void testCheckForFlush() {
     //arrange
     ArrayList<Card> cards1 = new ArrayList<>();
+    cards1.add(new Card(Suit.HEARTS, 2));
+    cards1.add(new Card(Suit.CLUBS, 3));
+    cards1.add(new Card(Suit.CLUBS, 4));
     cards1.add(new Card(Suit.CLUBS, 2));
     cards1.add(new Card(Suit.CLUBS, 3));
     cards1.add(new Card(Suit.CLUBS, 4));
     Hand hand1 = new Hand(cards1);
 
     ArrayList<Card> cards2 = new ArrayList<>();
+    cards2.add(new Card(Suit.HEARTS, 2));
+    cards2.add(new Card(Suit.HEARTS, 3));
+    cards2.add(new Card(Suit.DIAMONDS, 4));
     cards2.add(new Card(Suit.HEARTS, 2));
     cards2.add(new Card(Suit.HEARTS, 3));
     cards2.add(new Card(Suit.DIAMONDS, 4));
