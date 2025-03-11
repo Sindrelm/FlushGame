@@ -1,3 +1,5 @@
+package ntnu.idi.flushgame2;
+
 import ntnu.idi.flushgame2.modules.Card;
 import ntnu.idi.flushgame2.modules.Suit;
 import org.junit.jupiter.api.BeforeEach;

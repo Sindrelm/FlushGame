@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eb719bb-1942-4ec3-a093-3d7a87c869d2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/modules/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/modules/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ntnu/idi/flushgame2/CardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DeckOfCardsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ntnu/idi/flushgame2/DeckOfCardsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ntnu/idi/flushgame2/HandTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +30,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -48,6 +51,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="delegateBuildToMaven" value="true" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -62,10 +68,13 @@
     "Application.HelloApplication.executor": "Run",
     "Application.Start.executor": "Run",
     "JUnit.All in FlushGame2.executor": "Run",
+    "JUnit.CardTest.executor": "Run",
+    "JUnit.java in FlushGame2.executor": "Run",
+    "JUnit.ntnu.idi.flushgame2 in FlushGame2.executor": "Run",
     "Maven.run.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "pokerBranch",
+    "git-widget-placeholder": "blackjackDev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/sindre/Documents/Proggramering/FlushGame2/src/main/resources/ntnu/idi/flushgame2/suitImages",
     "node.js.detected.package.eslint": "true",
@@ -73,6 +82,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -83,21 +93,12 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ntnu.idi.flushgame2" />
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in FlushGame2">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ntnu.idi.flushgame2.HelloApplication" />
-      <module name="FlushGame2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ntnu.idi.flushgame2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.java in FlushGame2">
     <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ntnu.idi.flushgame2.Start" />
       <module name="FlushGame2" />
@@ -114,6 +115,43 @@
     <configuration name="All in FlushGame2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlushGame2" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlushGame2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ntnu.idi.flushgame2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ntnu.idi.flushgame2" />
+      <option name="MAIN_CLASS_NAME" value="ntnu.idi.flushgame2.CardTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="java in FlushGame2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlushGame2" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ntnu.idi.flushgame2 in FlushGame2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlushGame2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ntnu.idi.flushgame2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ntnu.idi.flushgame2" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -151,16 +189,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.HelloApplication" />
       <item itemvalue="Application.Start" />
+      <item itemvalue="JUnit.CardTest" />
+      <item itemvalue="JUnit.java in FlushGame2" />
+      <item itemvalue="JUnit.ntnu.idi.flushgame2 in FlushGame2" />
       <item itemvalue="JUnit.All in FlushGame2" />
       <item itemvalue="Maven.run" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.java in FlushGame2" />
+        <item itemvalue="JUnit.CardTest" />
+        <item itemvalue="JUnit.ntnu.idi.flushgame2 in FlushGame2" />
         <item itemvalue="JUnit.All in FlushGame2" />
         <item itemvalue="Application.Start" />
-        <item itemvalue="Application.HelloApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -187,5 +229,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -1,8 +1,9 @@
+package ntnu.idi.flushgame2;
+
 import java.util.ArrayList;
 import ntnu.idi.flushgame2.modules.Card;
 import ntnu.idi.flushgame2.modules.Hand;
 import ntnu.idi.flushgame2.modules.Suit;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,3 +1,5 @@
+package ntnu.idi.flushgame2;
+
 import java.util.ArrayList;
 import ntnu.idi.flushgame2.modules.Card;
 import ntnu.idi.flushgame2.modules.DeckOfCards;
