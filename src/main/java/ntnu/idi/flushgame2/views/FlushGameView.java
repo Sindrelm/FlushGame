@@ -1,5 +1,6 @@
 package ntnu.idi.flushgame2.views;
 
+import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -20,7 +21,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import ntnu.idi.flushgame2.Games.FlushGame;
 import ntnu.idi.flushgame2.Start;
+import ntnu.idi.flushgame2.modules.Card;
 import ntnu.idi.flushgame2.modules.DeckOfCards;
+import ntnu.idi.flushgame2.modules.Hand;
+import ntnu.idi.flushgame2.modules.Suit;
 
 public class FlushGameView {
 
@@ -117,9 +121,12 @@ public class FlushGameView {
     Button closeButton = new Button("Exit Game");
     closeButton.setOnAction(e -> closeView());
 
+    Button createWinButton = new Button("Create Win");
+    createWinButton.setOnAction(e -> createWin());
+
     HBox buttonsBox = new HBox();
     buttonsBox.setAlignment(Pos.CENTER);
-    buttonsBox.getChildren().addAll(dealHandButton, closeButton);
+    buttonsBox.getChildren().addAll(dealHandButton, createWinButton, closeButton);
 
     return buttonsBox;
   }
@@ -127,11 +134,31 @@ public class FlushGameView {
   public static void playRound() {
     deck.reShuffleCards();
     handBox.getChildren().clear();
-    handBox.getChildren().add(HandView.getHandView(deck.dealHand(5)));
+
+    Hand hand = deck.dealHand(5);
+    handBox.getChildren().add(HandView.getHandView(hand));
+
+    if (hand.isFlush()) {
+      WinView.displayWinSequence();
+    }
   }
 
   private static void closeView() {
     HomeView.display();
   }
 
+  private static void createWin() {
+    handBox.getChildren().clear();
+    ArrayList<Card> cards = new ArrayList<>();
+    int i = 0;
+    while(i < 5) {
+      cards.add(new Card(Suit.CLUBS, i + 3));
+      i ++;
+    }
+    Hand hand = new Hand(cards);
+    handBox.getChildren().add(HandView.getHandView(hand));
+    if (hand.isFlush()) {
+      WinView.displayWinSequence();
+    }
+  }
 }

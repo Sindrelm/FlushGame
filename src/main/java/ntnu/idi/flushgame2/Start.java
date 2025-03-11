@@ -36,14 +36,13 @@ public class Start extends Application {
 
     HomeView.display();
 
-    Scene scene = new Scene(root, 1000, 400);
+    Scene scene = new Scene(root, 1300, 700);
     root.prefWidthProperty().bind(scene.widthProperty());
     root.prefHeightProperty().bind(scene.heightProperty());
     stage.setTitle("Hello!");
     stage.setScene(scene);
     stage.show();
   }
-
 
   public static void main(String[] args) {
     launch();
