@@ -46,17 +46,41 @@ public class CardView {
   }
 
   private static HBox getCardTop(Card card) {
-    Text cardValueText = new Text("" + card.getValue());
-    cardValueText.setFont(new Font("Arial", 20));
-
     ImageView suitImage = getSuitImage(card.getSuit());
     setImageSize(suitImage, 20);
 
     HBox cardTop = new HBox();
     cardTop.setAlignment(Pos.CENTER_LEFT);
-    cardTop.getChildren().addAll(cardValueText, suitImage);
+    cardTop.getChildren().addAll(getCardValueText(card), suitImage);
 
     return cardTop;
+  }
+
+  private static Text getCardValueText(Card card) {
+    Text cardValueText = new Text(getCardValueString(card.getValue()));
+    cardValueText.setFont(new Font("Arial", 20));
+
+    return cardValueText;
+  }
+
+  private static String getCardValueString(int value) {
+    String valueString = null;
+    if (value > 1 && value < 11) {
+     valueString = "" + value;
+    }
+    else if (value == 14) {
+      valueString = "A";
+    }
+    else if (value == 13) {
+      valueString = "K";
+    }
+    else if (value == 12) {
+      valueString = "Q";
+    }
+    else if (value == 11) {
+      valueString = "J";
+    }
+    return valueString;
   }
 
   private static StackPane getCardMiddle(Card card) {
@@ -70,15 +94,12 @@ public class CardView {
   }
 
   private static HBox getCardBottom(Card card) {
-    Text cardValueText = new Text("" + card.getValue());
-    cardValueText.setFont(new Font("Arial", 20));
-
     ImageView suitImage = getSuitImage(card.getSuit());
     setImageSize(suitImage, 20);
 
     HBox cardBottom = new HBox();
     cardBottom.setAlignment(Pos.CENTER_RIGHT);
-    cardBottom.getChildren().addAll(cardValueText, suitImage);
+    cardBottom.getChildren().addAll(getCardValueText(card), suitImage);
 
     return cardBottom;
   }
