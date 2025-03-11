@@ -1,5 +1,6 @@
 package ntnu.idi.flushgame2.views;
 
+import java.util.Objects;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -95,7 +96,8 @@ public class CardView {
   }
 
   private static ImageView createImageView(String suitImageLocation) {
-    return new ImageView(new Image(CardView.class.getResourceAsStream(suitImageLocation)));
+    return new ImageView(new Image(
+        Objects.requireNonNull(CardView.class.getResourceAsStream(suitImageLocation))));
   }
 
   private static void setImageSize(ImageView image, double size) {
