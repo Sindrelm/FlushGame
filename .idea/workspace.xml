@@ -5,14 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eb719bb-1942-4ec3-a093-3d7a87c869d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ntnu/idi/flushgame2/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/views/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/views/CardView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,11 +56,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
+    "Application.Start.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/sindre/Documents/Proggramering/FlushGame2/src/main/java/ntnu/idi/flushgame2",
+    "last_opened_file_path": "/Users/sindre/Documents/Proggramering/FlushGame2/src/main/resources/ntnu/idi/flushgame2/suitImages",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,6 +72,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/ntnu/idi/flushgame2/suitImages" />
       <recent name="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2" />
       <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/src" />
@@ -118,7 +128,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741687165226</updated>
-      <workItem from="1741687166213" duration="869000" />
+      <workItem from="1741687166213" duration="3163000" />
     </task>
     <servers />
   </component>
