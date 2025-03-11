@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import ntnu.idi.flushgame2.modules.Card;
 import ntnu.idi.flushgame2.modules.Suit;
 import ntnu.idi.flushgame2.views.CardView;
 
@@ -14,7 +15,11 @@ public class Start extends Application {
   @Override
   public void start(Stage stage) throws IOException {
     VBox root = new VBox();
-    root.getChildren().add(CardView.getSuitImage(Suit.HEARTS));
+
+    //Debugg
+    Card card = new Card(Suit.CLUBS, 9);
+    root.getChildren().add(CardView.getCardView(card));
+
     Scene scene = new Scene(root);
     stage.setTitle("Hello!");
     stage.setScene(scene);

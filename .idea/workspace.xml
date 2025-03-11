@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1eb719bb-1942-4ec3-a093-3d7a87c869d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/views/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/idi/flushgame2/views/CardView.java" afterDir="false" />
     </list>
@@ -128,7 +127,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741687165226</updated>
-      <workItem from="1741687166213" duration="3163000" />
+      <workItem from="1741687166213" duration="4888000" />
     </task>
     <servers />
   </component>
