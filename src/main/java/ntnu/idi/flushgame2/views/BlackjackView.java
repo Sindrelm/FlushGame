@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javafx.animation.PauseTransition;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -27,6 +28,11 @@ public class BlackjackView {
   private static BlackjackHand dealerHand;
   private static VBox blackJackBox;
   private static HBox buttonBox;
+  private static Slider betSlider;
+  private static HBox middleBox;
+  private static Text betSize;
+  private static int currentBet;
+  private static Text playerBalance;
 
   public static void display() {
 
@@ -39,6 +45,8 @@ public class BlackjackView {
     buttonBox.setAlignment(Pos.CENTER);
     buttonBox.setSpacing(25);
 
+    createMiddleBox();
+
     blackJackBox = new VBox();
     blackJackBox.prefWidthProperty().bind(Start.root.widthProperty());
     blackJackBox.prefHeightProperty().bind(Start.root.heightProperty());
@@ -46,7 +54,7 @@ public class BlackjackView {
     blackJackBox.setAlignment(Pos.CENTER);
     blackJackBox.setSpacing(25);
 
-    blackJackBox.getChildren().addAll(createDealerBox(), getTitle(), playerHandView, createStartButtons());
+    blackJackBox.getChildren().addAll(createDealerBox(), middleBox, playerHandView, createStartButtons());
 
     Start.root.getChildren().clear();
     Start.root.getChildren().addAll(blackJackBox);
@@ -58,7 +66,7 @@ public class BlackjackView {
     playerHandView.getChildren().add(CardView.getCardView(card));
 
     if(Start.player.getBlackJackHand().isBust()) {
-      resultSequence("Loss");
+      lossSequence();
     }
   }
 
@@ -78,13 +86,13 @@ public class BlackjackView {
       }
 
       if (dealerHand.isBust()) {
-        resultSequence("Win");
+        winSequence();
       } else if (dealerHand.getHandValue() > Start.player.getBlackJackHand().getHandValue()) {
-        resultSequence("Loss");
+        lossSequence();
       } else if (dealerHand.getHandValue() < Start.player.getBlackJackHand().getHandValue()) {
-        resultSequence("Win");
+        winSequence();
       } else {
-        resultSequence("Draw");
+        drawSequence();
       }
     });
 
@@ -92,6 +100,9 @@ public class BlackjackView {
   }
 
   private static void deal() {
+    currentBet = (int) betSlider.getValue();
+    betSize.setText("Bet: " + currentBet);
+
     createPlayButtons();
     Card dealerCard = deck.dealCard();
     dealerHand.addCard(dealerCard);
@@ -124,6 +135,20 @@ public class BlackjackView {
     titlePane.setOnMouseClicked(e -> resetGame(titlePane));
   }
 
+  private static void winSequence() {
+    Start.player.addBalance(currentBet);
+    resultSequence("Win");
+  }
+
+  private static void drawSequence() {
+    resultSequence("Push");
+  }
+
+  private static void lossSequence() {
+    Start.player.addBalance(-currentBet);
+    resultSequence("Loss");
+  }
+
   private static void resetGame(StackPane resultPane) {
     playerHandView.getChildren().clear();
     Start.player.getBlackJackHand().resetHand();
@@ -131,6 +156,7 @@ public class BlackjackView {
     dealerHand.resetHand();
 
     createStartButtons();
+    refreshMiddleBox();
 
     Start.root.getChildren().remove(resultPane);
   }
@@ -159,7 +185,7 @@ public class BlackjackView {
     exitButton.setOnAction(e -> exit());
 
     buttonBox.getChildren().clear();
-    buttonBox.getChildren().addAll(dealButton, exitButton);
+    buttonBox.getChildren().addAll(createBetSlider(), dealButton, exitButton);
 
     return buttonBox;
   }
@@ -175,6 +201,29 @@ public class BlackjackView {
     buttonBox.getChildren().addAll(hitButton, standButton);
 
     return buttonBox;
+  }
+
+  private static VBox createBetSlider() {
+    betSlider = new Slider();
+    betSlider.setMin(0);
+    betSlider.setMax(Start.player.getBalance());
+    betSlider.setValue(0);
+    betSlider.setBlockIncrement(25);
+    betSlider.setSnapToTicks(true);
+
+    Text valueLabel = new Text("Bet: " + (int) betSlider.getValue());
+    valueLabel.setFill(Color.YELLOW);
+    valueLabel.setFont(new Font("Arial Bold", 15));
+
+    betSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+      valueLabel.setText("Verdi: " + newValue.intValue());
+    });
+
+    VBox betSliderBox = new VBox();
+    betSliderBox.setAlignment(Pos.CENTER);
+    betSliderBox.getChildren().addAll(betSlider, valueLabel);
+
+    return betSliderBox;
   }
 
   private static HBox createHand() {
@@ -194,6 +243,44 @@ public class BlackjackView {
 
     return handBox;
 
+  }
+
+  public static void refreshMiddleBox() {
+    betSize.setText("Bet: ");
+    playerBalance.setText("Balance: " + Start.player.getBalance());
+  }
+
+  public static void createMiddleBox() {
+    middleBox = new HBox();
+    middleBox.setAlignment(Pos.CENTER);
+    middleBox.setSpacing(100);
+
+    middleBox.getChildren().addAll(betSize(), getTitle(), createPlayerBalance());
+
+  }
+
+  private static StackPane betSize() {
+    betSize = new Text("Bet:");
+
+    StackPane betSizePane = new StackPane();
+    betSizePane.getChildren().addAll(betSize);
+
+    betSizePane.setMaxSize(200, 40);
+    betSizePane.setMinSize(200, 40);
+
+    return betSizePane;
+  }
+
+  private static StackPane createPlayerBalance() {
+    playerBalance = new Text("Balance: " + Start.player.getBalance());
+
+    StackPane balancePane = new StackPane();
+    balancePane.getChildren().add(playerBalance);
+
+    balancePane.setMaxSize(200, 40);
+    balancePane.setMinSize(200, 40);
+
+    return balancePane;
   }
 
   public static StackPane getTitle() {
