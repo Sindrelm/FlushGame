@@ -26,6 +26,8 @@ public class BlackjackView {
   private static DeckOfCards deck;
   private static BlackjackHand playerHand;
   private static BlackjackHand dealerHand;
+  private static VBox blackJackBox;
+  private static HBox buttonBox;
 
   public static void display() {
 
@@ -35,15 +37,18 @@ public class BlackjackView {
     playerHandView = createHand();
     dealerHand = new BlackjackHand(new ArrayList<Card>());
 
+    buttonBox = new HBox();
+    buttonBox.setAlignment(Pos.CENTER);
+    buttonBox.setSpacing(25);
 
-    VBox blackJackBox = new VBox();
+    blackJackBox = new VBox();
     blackJackBox.prefWidthProperty().bind(Start.root.widthProperty());
     blackJackBox.prefHeightProperty().bind(Start.root.heightProperty());
     blackJackBox.setBackground(new Background(new BackgroundFill(Color.web("#006B3C"), null, null)));
     blackJackBox.setAlignment(Pos.CENTER);
     blackJackBox.setSpacing(25);
 
-    blackJackBox.getChildren().addAll(createDealerBox(), getTitle(), playerHandView, createButtons());
+    blackJackBox.getChildren().addAll(createDealerBox(), getTitle(), playerHandView, createStartButtons());
 
     Start.root.getChildren().clear();
     Start.root.getChildren().addAll(blackJackBox);
@@ -88,6 +93,16 @@ public class BlackjackView {
     wait.play();
   }
 
+  private static void deal() {
+    createPlayButtons();
+    Card dealerCard = deck.dealCard();
+    dealerHand.addCard(dealerCard);
+    dealerHandView.getChildren().add(CardView.getCardView(dealerCard));
+
+    hit();
+    hit();
+  }
+
   private static void resultSequence(String resultText) {
     Text title = new Text(resultText);
     Text titleAccent = new Text(resultText);
@@ -117,6 +132,8 @@ public class BlackjackView {
     dealerHandView.getChildren().clear();
     dealerHand.resetHand();
 
+    createStartButtons();
+
     Start.root.getChildren().remove(resultPane);
   }
 
@@ -128,7 +145,7 @@ public class BlackjackView {
     dealerHandView = createHand();
 
     HBox dealerBox = new HBox();
-    dealerBox.setSpacing(80);
+    dealerBox.setSpacing(30);
     dealerBox.setAlignment(Pos.CENTER);
 
     dealerBox.getChildren().addAll(dealerHandView, CardView.getCardBackPane());
@@ -136,20 +153,28 @@ public class BlackjackView {
     return dealerBox;
   }
 
-  private static HBox createButtons() {
+  private static HBox createStartButtons() {
+    Button dealButton = new Button("Deal");
+    dealButton.setOnAction(e -> deal());
+
+    Button exitButton = new Button("Exit");
+    exitButton.setOnAction(e -> exit());
+
+    buttonBox.getChildren().clear();
+    buttonBox.getChildren().addAll(dealButton, exitButton);
+
+    return buttonBox;
+  }
+
+  private static HBox createPlayButtons() {
     Button hitButton = new Button("Hit");
     hitButton.setOnAction(e -> hit());
 
     Button standButton = new Button("Stand");
     standButton.setOnAction(e -> stand());
 
-    Button exitButton = new Button("Exit");
-    exitButton.setOnAction(e -> exit());
-
-    HBox buttonBox = new HBox();
-    buttonBox.setAlignment(Pos.CENTER);
-    buttonBox.setSpacing(25);
-    buttonBox.getChildren().addAll(hitButton, standButton, exitButton);
+    buttonBox.getChildren().clear();
+    buttonBox.getChildren().addAll(hitButton, standButton);
 
     return buttonBox;
   }

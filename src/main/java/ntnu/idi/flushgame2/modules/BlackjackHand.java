@@ -18,9 +18,25 @@ public class BlackjackHand extends Hand{
 
   public int getHandValue() {
     int handValue = 0;
+    int aceCount = 0;
     for (Card card : hand) {
-      handValue += card.getValue();
+      if (card.getValue() == 14) {
+        handValue += 11;
+        aceCount ++;
+      }
+      else if (card.getValue() > 9) {
+        handValue += 10;
+      }
+      else {
+        handValue += card.getValue();
+      }
     }
+
+    while (handValue > 21 && aceCount > 0) {
+      handValue -= 10;
+      aceCount --;
+    }
+
     return handValue;
   }
 
