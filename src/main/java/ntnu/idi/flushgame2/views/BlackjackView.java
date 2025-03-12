@@ -24,7 +24,6 @@ public class BlackjackView {
   private static HBox dealerHandView;
   private static HBox playerHandView;
   private static DeckOfCards deck;
-  private static BlackjackHand playerHand;
   private static BlackjackHand dealerHand;
   private static VBox blackJackBox;
   private static HBox buttonBox;
@@ -33,7 +32,6 @@ public class BlackjackView {
 
     deck = new DeckOfCards();
 
-    playerHand = new BlackjackHand(new ArrayList<Card>());
     playerHandView = createHand();
     dealerHand = new BlackjackHand(new ArrayList<Card>());
 
@@ -56,10 +54,10 @@ public class BlackjackView {
 
   private static void hit() {
     Card card = deck.dealCard();
-    playerHand.addCard(card);
+    Start.player.getBlackJackHand().addCard(card);
     playerHandView.getChildren().add(CardView.getCardView(card));
 
-    if(playerHand.isBust()) {
+    if(Start.player.getBlackJackHand().isBust()) {
       resultSequence("Loss");
     }
   }
@@ -81,9 +79,9 @@ public class BlackjackView {
 
       if (dealerHand.isBust()) {
         resultSequence("Win");
-      } else if (dealerHand.getHandValue() > playerHand.getHandValue()) {
+      } else if (dealerHand.getHandValue() > Start.player.getBlackJackHand().getHandValue()) {
         resultSequence("Loss");
-      } else if (dealerHand.getHandValue() < playerHand.getHandValue()) {
+      } else if (dealerHand.getHandValue() < Start.player.getBlackJackHand().getHandValue()) {
         resultSequence("Win");
       } else {
         resultSequence("Draw");
@@ -128,7 +126,7 @@ public class BlackjackView {
 
   private static void resetGame(StackPane resultPane) {
     playerHandView.getChildren().clear();
-    playerHand.resetHand();
+    Start.player.getBlackJackHand().resetHand();
     dealerHandView.getChildren().clear();
     dealerHand.resetHand();
 

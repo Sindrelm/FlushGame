@@ -77,6 +77,7 @@ public class HomeView {
   }
 
   private static void startBlackjack() {
+    Start.player.setBlackJackHand();
     BlackjackView.display();
   }
 

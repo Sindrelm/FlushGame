@@ -11,15 +11,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import ntnu.idi.flushgame2.modules.DeckOfCards;
+import ntnu.idi.flushgame2.modules.Player;
 import ntnu.idi.flushgame2.views.HomeView;
 
 public class Start extends Application {
 
   public static StackPane root;
+  public static Player player;
   private static DeckOfCards deck;
 
   @Override
   public void start(Stage stage) throws IOException {
+    player = new Player();
+
     root = new StackPane();
     root.setPadding(new Insets(40));
     root.setBackground(new Background(new BackgroundFill(Color.web("#006B3C"), null, null)));

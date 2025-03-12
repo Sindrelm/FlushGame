@@ -31,6 +31,10 @@ public class Player {
     return hand;
   }
 
+  public BlackjackHand getBlackJackHand() {
+    return (BlackjackHand) hand;
+  }
+
   public double getBalance() {
     return balance;
   }
