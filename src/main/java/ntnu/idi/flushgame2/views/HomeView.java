@@ -1,19 +1,20 @@
 package ntnu.idi.flushgame2.views;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Objects;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import ntnu.idi.flushgame2.Start;
-import ntnu.idi.flushgame2.modules.BlackjackHand;
+import ntnu.idi.flushgame2.modules.CardPlayer;
 
 public class HomeView {
 
@@ -26,7 +27,6 @@ public class HomeView {
     Start.root.getChildren().add(homeBox);
 
   }
-
 
   private static StackPane createTitle() {
     Text title = new Text("CASINO");

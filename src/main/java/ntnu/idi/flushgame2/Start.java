@@ -11,18 +11,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import ntnu.idi.flushgame2.modules.DeckOfCards;
-import ntnu.idi.flushgame2.modules.Player;
+import ntnu.idi.flushgame2.modules.CardPlayer;
 import ntnu.idi.flushgame2.views.HomeView;
 
 public class Start extends Application {
 
   public static StackPane root;
-  public static Player player;
+  public static CardPlayer player;
   private static DeckOfCards deck;
 
   @Override
   public void start(Stage stage) throws IOException {
-    player = new Player();
+    player = new CardPlayer();
 
     root = new StackPane();
     root.setPadding(new Insets(40));

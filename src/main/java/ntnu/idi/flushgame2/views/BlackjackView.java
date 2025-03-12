@@ -31,7 +31,7 @@ public class BlackjackView {
   private static Slider betSlider;
   private static HBox middleBox;
   private static Text betSize;
-  private static int currentBet;
+  private static double currentBet;
   private static Text playerBalance;
 
   public static void display() {
@@ -116,6 +116,15 @@ public class BlackjackView {
 
     hit();
     hit();
+  }
+
+  private static void doubleAction() {
+    if (Start.player.getHand().getHand().size() == 2) {
+      currentBet *= 1.5;
+      betSize.setText("Bet: " + currentBet);
+      hit();
+      stand();
+    }
   }
 
   private static void resultSequence(String resultText) {
@@ -203,6 +212,9 @@ public class BlackjackView {
   }
 
   private static HBox createPlayButtons() {
+    Button doubleButton = new Button("Double");
+    doubleButton.setOnAction(e -> doubleAction());
+
     Button hitButton = new Button("Hit");
     hitButton.setOnAction(e -> hit());
 
@@ -210,7 +222,7 @@ public class BlackjackView {
     standButton.setOnAction(e -> stand());
 
     buttonBox.getChildren().clear();
-    buttonBox.getChildren().addAll(hitButton, standButton);
+    buttonBox.getChildren().addAll(doubleButton, hitButton, standButton);
 
     return buttonBox;
   }
