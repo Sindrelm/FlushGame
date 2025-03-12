@@ -43,4 +43,8 @@ public class BlackjackHand extends Hand{
   public boolean isBust() {
     return getHandValue() > 21;
   }
+
+  public boolean isBlackjack() {
+    return (getHandValue() == 21 && hand.size() == 2);
+  }
 }

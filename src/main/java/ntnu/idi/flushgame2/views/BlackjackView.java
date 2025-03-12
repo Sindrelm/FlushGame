@@ -85,13 +85,19 @@ public class BlackjackView {
         }
       }
 
-      if (dealerHand.isBust()) {
+      if (!dealerHand.isBlackjack() && Start.player.getBlackJackHand().isBlackjack()) {
+        blackjackSequence();
+      }
+      else if (dealerHand.isBust()) {
         winSequence();
-      } else if (dealerHand.getHandValue() > Start.player.getBlackJackHand().getHandValue()) {
+      }
+      else if (dealerHand.getHandValue() > Start.player.getBlackJackHand().getHandValue()) {
         lossSequence();
-      } else if (dealerHand.getHandValue() < Start.player.getBlackJackHand().getHandValue()) {
+      }
+      else if (dealerHand.getHandValue() < Start.player.getBlackJackHand().getHandValue()) {
         winSequence();
-      } else {
+      }
+      else {
         drawSequence();
       }
     });
@@ -135,6 +141,11 @@ public class BlackjackView {
     titlePane.setOnMouseClicked(e -> resetGame(titlePane));
   }
 
+  private static void blackjackSequence() {
+    Start.player.addBalance(currentBet * 1.5);
+    resultSequence("Blackjack");
+  }
+
   private static void winSequence() {
     Start.player.addBalance(currentBet);
     resultSequence("Win");
@@ -154,6 +165,7 @@ public class BlackjackView {
     Start.player.getBlackJackHand().resetHand();
     dealerHandView.getChildren().clear();
     dealerHand.resetHand();
+    deck.reShuffleCards();
 
     createStartButtons();
     refreshMiddleBox();
@@ -255,30 +267,34 @@ public class BlackjackView {
     middleBox.setAlignment(Pos.CENTER);
     middleBox.setSpacing(100);
 
-    middleBox.getChildren().addAll(betSize(), getTitle(), createPlayerBalance());
+    middleBox.getChildren().addAll(createBetSize(), getTitle(), createPlayerBalance());
 
   }
 
-  private static StackPane betSize() {
+  private static StackPane createBetSize() {
     betSize = new Text("Bet:");
+    betSize.setFill(Color.LIGHTGOLDENRODYELLOW);
+    betSize.setFont(new Font("Arial", 25));
 
     StackPane betSizePane = new StackPane();
     betSizePane.getChildren().addAll(betSize);
 
-    betSizePane.setMaxSize(200, 40);
-    betSizePane.setMinSize(200, 40);
+    betSizePane.setMaxSize(200, 20);
+    betSizePane.setMinSize(200, 20);
 
     return betSizePane;
   }
 
   private static StackPane createPlayerBalance() {
     playerBalance = new Text("Balance: " + Start.player.getBalance());
+    playerBalance.setFill(Color.LIGHTGOLDENRODYELLOW);
+    playerBalance.setFont(new Font("Arial", 25));
 
     StackPane balancePane = new StackPane();
     balancePane.getChildren().add(playerBalance);
 
-    balancePane.setMaxSize(200, 40);
-    balancePane.setMinSize(200, 40);
+    balancePane.setMaxSize(200, 20);
+    balancePane.setMinSize(200, 20);
 
     return balancePane;
   }
