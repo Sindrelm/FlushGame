@@ -1,13 +1,11 @@
 package ntnu.idi.flushgame2.views;
 
+import java.util.ArrayList;
+import javafx.animation.PauseTransition;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -15,21 +13,27 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import ntnu.idi.flushgame2.Start;
+import ntnu.idi.flushgame2.modules.BlackjackHand;
 import ntnu.idi.flushgame2.modules.Card;
 import ntnu.idi.flushgame2.modules.DeckOfCards;
 
 public class BlackjackView {
 
-  private static HBox dealerHand;
-  private static HBox playerHand;
+  private static HBox dealerHandView;
+  private static HBox playerHandView;
   private static DeckOfCards deck;
+  private static BlackjackHand playerHand;
+  private static BlackjackHand dealerHand;
 
   public static void display() {
 
     deck = new DeckOfCards();
 
-    playerHand = createHand();
+    playerHand = new BlackjackHand(new ArrayList<Card>());
+    playerHandView = createHand();
+    dealerHand = new BlackjackHand(new ArrayList<Card>());
 
 
     VBox blackJackBox = new VBox();
@@ -39,7 +43,7 @@ public class BlackjackView {
     blackJackBox.setAlignment(Pos.CENTER);
     blackJackBox.setSpacing(25);
 
-    blackJackBox.getChildren().addAll(createDealerBox(), getTitle(), playerHand, createButtons());
+    blackJackBox.getChildren().addAll(createDealerBox(), getTitle(), playerHandView, createButtons());
 
     Start.root.getChildren().clear();
     Start.root.getChildren().addAll(blackJackBox);
@@ -47,7 +51,73 @@ public class BlackjackView {
 
   private static void hit() {
     Card card = deck.dealCard();
-    playerHand.getChildren().add(CardView.getCardView(card));
+    playerHand.addCard(card);
+    playerHandView.getChildren().add(CardView.getCardView(card));
+
+    if(playerHand.isBust()) {
+      resultSequence("Loss");
+    }
+  }
+
+  private static void stand() {
+    PauseTransition wait = new PauseTransition(Duration.millis(700));
+
+    wait.setOnFinished(event -> {
+      if (dealerHand.getHandValue() < 17) {
+        Card card = deck.dealCard();
+        dealerHand.addCard(card);
+        dealerHandView.getChildren().add(CardView.getCardView(card));
+
+        if (!dealerHand.isBust()) {
+          wait.play();
+          return;
+        }
+      }
+
+      if (dealerHand.isBust()) {
+        resultSequence("Win");
+      } else if (dealerHand.getHandValue() > playerHand.getHandValue()) {
+        resultSequence("Loss");
+      } else if (dealerHand.getHandValue() < playerHand.getHandValue()) {
+        resultSequence("Win");
+      } else {
+        resultSequence("Draw");
+      }
+    });
+
+    wait.play();
+  }
+
+  private static void resultSequence(String resultText) {
+    Text title = new Text(resultText);
+    Text titleAccent = new Text(resultText);
+    title.setFill(Color.PURPLE);
+    titleAccent.setFill(Color.CORNFLOWERBLUE);
+
+    title.setFont(new Font("Arial Bold", 100));
+    titleAccent.setFont(new Font("Arial Bold", 100));
+
+    title.setLineSpacing(15);
+    titleAccent.setLineSpacing(15);
+
+    StackPane titlePane = new StackPane();
+    titlePane.setAlignment(Pos.CENTER);
+
+    titlePane.getChildren().addAll(titleAccent, title);
+    titleAccent.setTranslateX(3.5);
+    titleAccent.setTranslateY(3.5);
+
+    Start.root.getChildren().addAll(titlePane);
+    titlePane.setOnMouseClicked(e -> resetGame(titlePane));
+  }
+
+  private static void resetGame(StackPane resultPane) {
+    playerHandView.getChildren().clear();
+    playerHand.resetHand();
+    dealerHandView.getChildren().clear();
+    dealerHand.resetHand();
+
+    Start.root.getChildren().remove(resultPane);
   }
 
   private static void exit() {
@@ -55,13 +125,13 @@ public class BlackjackView {
   }
 
   private static HBox createDealerBox() {
-    dealerHand = createHand();
+    dealerHandView = createHand();
 
     HBox dealerBox = new HBox();
     dealerBox.setSpacing(80);
     dealerBox.setAlignment(Pos.CENTER);
 
-    dealerBox.getChildren().addAll(dealerHand, CardView.getCardBackPane());
+    dealerBox.getChildren().addAll(dealerHandView, CardView.getCardBackPane());
 
     return dealerBox;
   }
@@ -71,6 +141,7 @@ public class BlackjackView {
     hitButton.setOnAction(e -> hit());
 
     Button standButton = new Button("Stand");
+    standButton.setOnAction(e -> stand());
 
     Button exitButton = new Button("Exit");
     exitButton.setOnAction(e -> exit());

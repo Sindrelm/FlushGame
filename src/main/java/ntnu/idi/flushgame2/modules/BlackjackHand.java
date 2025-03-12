@@ -12,6 +12,10 @@ public class BlackjackHand extends Hand{
     hand.add(card);
   }
 
+  public void resetHand() {
+    hand.clear();
+  }
+
   public int getHandValue() {
     int handValue = 0;
     for (Card card : hand) {
