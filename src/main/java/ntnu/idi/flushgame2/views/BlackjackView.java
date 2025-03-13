@@ -123,7 +123,9 @@ public class BlackjackView {
       currentBet *= 1.5;
       betSize.setText("Bet: " + currentBet);
       hit();
-      stand();
+      if(!Start.player.getBlackJackHand().isBust()) {
+        stand();
+      }
     }
   }
 
