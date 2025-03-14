@@ -97,7 +97,7 @@ public class BlackjackView {
       else if (dealerHand.getHandValue() < Start.player.getBlackJackHand().getHandValue()) {
         winSequence();
       }
-      else {
+      else if (dealerHand.getHandValue() == Start.player.getBlackJackHand().getHandValue()){
         drawSequence();
       }
     });
@@ -119,8 +119,8 @@ public class BlackjackView {
   }
 
   private static void doubleAction() {
-    if (Start.player.getHand().getHand().size() == 2) {
-      currentBet *= 1.5;
+    if (Start.player.getHand().getHand().size() == 2 && Start.player.getBalance() >= currentBet * 2) {
+      currentBet *= 2;
       betSize.setText("Bet: " + currentBet);
       hit();
       if(!Start.player.getBlackJackHand().isBust()) {

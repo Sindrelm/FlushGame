@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import ntnu.idi.flushgame2.modules.DeckOfCards;
 import ntnu.idi.flushgame2.modules.CardPlayer;
+import ntnu.idi.flushgame2.music.MusicPlayer;
 import ntnu.idi.flushgame2.views.HomeView;
 
 public class Start extends Application {
@@ -22,6 +23,10 @@ public class Start extends Application {
 
   @Override
   public void start(Stage stage) throws IOException {
+
+    MusicPlayer musicPlayer = new MusicPlayer();
+    musicPlayer.play();
+
     player = new CardPlayer();
 
     root = new StackPane();

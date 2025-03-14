@@ -1,7 +1,5 @@
 package ntnu.idi.flushgame2.views;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Objects;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import ntnu.idi.flushgame2.Start;
 import ntnu.idi.flushgame2.modules.CardPlayer;
+import ntnu.idi.flushgame2.music.MusicPlayer;
 
 public class HomeView {
 
