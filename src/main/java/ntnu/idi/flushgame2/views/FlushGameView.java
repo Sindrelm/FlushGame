@@ -30,10 +30,12 @@ public class FlushGameView {
 
   private static HBox handBox;
   private static DeckOfCards deck;
+  private static VBox statsBox;
 
   public static void display() {
     deck = new DeckOfCards();
     createHandBox();
+    statsBox = new VBox();
 
     VBox flushGameBox = new VBox();
     flushGameBox.prefWidthProperty().bind(Start.root.widthProperty());
@@ -42,7 +44,7 @@ public class FlushGameView {
     flushGameBox.setAlignment(Pos.CENTER);
     flushGameBox.setSpacing(25);
 
-    flushGameBox.getChildren().addAll(createTitle(), createDeck(), handBox, createButtons());
+    flushGameBox.getChildren().addAll(createTitle(), createDeck(), handBox, createButtons(), statsBox);
 
     Start.root.getChildren().clear();
     Start.root.getChildren().addAll(flushGameBox);
@@ -72,6 +74,28 @@ public class FlushGameView {
 
     return deckPane;
   }
+
+  private static void createStatsBox(Hand hand) {
+    statsBox.getChildren().clear();
+    HBox heartsBox = new HBox();
+
+    int handSum = hand.getHand().stream()
+        .mapToInt(card -> card.getValue() == 14 ? 1 : card.getValue())
+        .sum();
+
+    hand.getHand().stream()
+        .filter(card -> card.getSuit() == Suit.HEARTS)
+        .map(card -> new Text(" h" + card.getValue()))
+        .forEach(heartsBox.getChildren()::add);
+
+    boolean queenOfSpades = hand.getHand().stream()
+        .anyMatch(card -> card.getValue() == 12 && card.getSuit() == Suit.SPADES);
+
+    statsBox.getChildren().add(new Text("sum of hand:" + handSum));
+    statsBox.getChildren().add(heartsBox);
+    statsBox.getChildren().add(new Text(queenOfSpades ? "found queen of spades" : "queen of spades not found"));
+  }
+
 
   private static void createHandBox() {
     handBox = new HBox();
@@ -136,6 +160,7 @@ public class FlushGameView {
     handBox.getChildren().clear();
 
     Hand hand = deck.dealHand(5);
+    createStatsBox(hand);
     handBox.getChildren().add(HandView.getHandView(hand));
 
     if (hand.isFlush()) {
